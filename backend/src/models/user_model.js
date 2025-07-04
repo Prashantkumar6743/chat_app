@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -16,11 +16,11 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-        minlength:6,
+        minlength: 6
     },
-    profilePic:{
+    profilePic: {
         type: String,
-        default:"",
+        default: ""
     },
     createdAt: {
         type: Date,
@@ -32,12 +32,11 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-// Update `updatedAt` before saving
-userSchema.pre('save', function(next) {
+userSchema.pre('save', function (next) {
     this.updatedAt = Date.now();
     next();
 });
 
 const User = mongoose.model('User', userSchema);
 
-module.exports = User;
+export default User;
