@@ -95,11 +95,9 @@ export const useAuth = create((set, get) => ({
 
         set({ socket });
         socket.on("connect", () => {
-            console.log("Socket connected:", socket.id);
         });
 
         socket.on("getOnlineUsers", (users) => {
-            console.log(" Online Users:", users);
             set({ onlineUsers: users });
         });
     },
